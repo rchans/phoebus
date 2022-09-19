@@ -231,8 +231,9 @@ public class JFXUtil extends org.phoebus.ui.javafx.JFXUtil
      */
     public static Pos computePos(final HorizontalAlignment horiz, final VerticalAlignment vert)
     {
-        // This depends on the order of 'Pos' and uses Pos.BOTTOM_*, not Pos.BASELINE_*.
-        // Could use if/switch orgy to be independent from 'Pos' ordinals.
+        // The Pos class is made of VPos and HPos components. Unfortunately, it does not expose
+        // a constructor to build a position from those separate components. So, we must
+        // infer the Pos enum using the positioning of the ordinals and some algebra
         return Pos.values()[vert.ordinal() * 3 + horiz.ordinal()];
     }
 

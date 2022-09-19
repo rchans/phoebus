@@ -11,9 +11,14 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+
+import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import org.csstudio.display.builder.model.properties.HorizontalAlignment;
+import org.csstudio.display.builder.model.properties.VerticalAlignment;
 import org.csstudio.display.builder.model.properties.WidgetColor;
 import org.junit.Test;
 
@@ -77,6 +82,21 @@ public class JFXUtilTest
         String expected = "foobar: bold italic 37px 'System';";
         assertEquals(expected, actual);
 
+    }
+
+    @Test
+    public void testPositionFromHorizAndVertComponents() {
+        assertEquals(Pos.TOP_LEFT, JFXUtil.computePos(HorizontalAlignment.LEFT, VerticalAlignment.TOP));
+        assertEquals(Pos.TOP_CENTER, JFXUtil.computePos(HorizontalAlignment.CENTER, VerticalAlignment.TOP));
+        assertEquals(Pos.TOP_RIGHT, JFXUtil.computePos(HorizontalAlignment.RIGHT, VerticalAlignment.TOP));
+
+        assertEquals(Pos.CENTER_LEFT, JFXUtil.computePos(HorizontalAlignment.LEFT, VerticalAlignment.MIDDLE));
+        assertEquals(Pos.CENTER, JFXUtil.computePos(HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE));
+        assertEquals(Pos.CENTER_RIGHT, JFXUtil.computePos(HorizontalAlignment.RIGHT, VerticalAlignment.MIDDLE));
+
+        assertEquals(Pos.BOTTOM_LEFT, JFXUtil.computePos(HorizontalAlignment.LEFT, VerticalAlignment.BOTTOM));
+        assertEquals(Pos.BOTTOM_CENTER, JFXUtil.computePos(HorizontalAlignment.CENTER, VerticalAlignment.BOTTOM));
+        assertEquals(Pos.BOTTOM_RIGHT, JFXUtil.computePos(HorizontalAlignment.RIGHT, VerticalAlignment.BOTTOM));
     }
 
 }
