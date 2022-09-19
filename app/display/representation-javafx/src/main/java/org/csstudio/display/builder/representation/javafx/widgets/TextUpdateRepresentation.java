@@ -256,6 +256,8 @@ public class TextUpdateRepresentation extends RegionBaseRepresentation<Control, 
                 label.setFont(JFXUtil.convert(model_widget.propFont().getValue()));
                 label.setAlignment(pos);
                 label.setWrapText(model_widget.propWrapWords().getValue());
+                label.setMinHeight(h);
+                label.setMinWidth(w);
             }
             else
             {
